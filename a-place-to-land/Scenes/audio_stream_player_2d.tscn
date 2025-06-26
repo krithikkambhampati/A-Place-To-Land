@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciqap82igl880"]
+
+[ext_resource type="AudioStream" uid="uid://f8en3nne8dl6" path="res://Audio/442911__scicodedev__calm_happy_rpgtownbackground.mp3" id="1_52fhu"]
+[ext_resource type="Script" uid="uid://c13557y5477qc" path="res://Scenes/audio_stream_player_2d.gd" id="2_52fhu"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_52fhu")
+volume_db = 1.0
+autoplay = true
+script = ExtResource("2_52fhu")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://xljuqms0tmjh"]
+
+[ext_resource type="Script" uid="uid://pfspwll3lrvd" path="res://Scenes/path_follow_2d.gd" id="1_pojwb"]
+[ext_resource type="Texture2D" uid="uid://b5ce32xco3k6v" path="res://Graphics/sun.png" id="1_sn1xx"]
+[ext_resource type="Texture2D" uid="uid://csq7c2cdtpoqm" path="res://Graphics/Gradient_Sky-Sunset_01-512x512.png" id="2_xgxeb"]
+[ext_resource type="Texture2D" uid="uid://cevaqcpl12bts" path="res://Graphics/moon.png" id="3_4aqey"]
+
+[sub_resource type="Curve2D" id="Curve2D_pojwb"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(144.533, 10.7017, -144.533, -10.7017, 234, 4, 5.34957, -54.568, -5.34957, 54.568, 36, 149, -210.426, 4.21858, 210.426, -4.21858, 254, 305, 0.466507, 91.4354, -0.466507, -91.4354, 458, 148, 133.818, -4.86101, -133.818, 4.86101, 233, 4)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgxeb"]
+radius = 16.0843
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltlj5"]
+radius = 14.0357
+
+[node name="Background" type="Node2D"]
+z_index = -1
+script = ExtResource("1_pojwb")
+
+[node name="sunset" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(239, 164)
+rotation = -3.13781
+scale = Vector2(1.00078, 0.771502)
+skew = 0.000619173
+texture = ExtResource("2_xgxeb")
+region_enabled = true
+region_rect = Rect2(6.05725, 6.05768, 505.943, 505.942)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-16, 40)
+scale = Vector2(0.999901, 0.92691)
+curve = SubResource("Curve2D_pojwb")
+
+[node name="Sun" type="PathFollow2D" parent="Path2D"]
+position = Vector2(234, 4)
+rotation = -3.13751
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/Sun"]
+texture = ExtResource("1_sn1xx")
+
+[node name="Moon" type="PathFollow2D" parent="Path2D"]
+position = Vector2(234, 4)
+rotation = -3.06768
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/Moon"]
+texture = ExtResource("3_4aqey")
+
+[node name="Area2D" type="Area2D" parent="Path2D/Moon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/Moon/Area2D"]
+shape = SubResource("CircleShape2D_xgxeb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(218, 44)
+shape = SubResource("CircleShape2D_ltlj5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

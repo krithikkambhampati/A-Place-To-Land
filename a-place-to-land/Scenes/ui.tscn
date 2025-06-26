@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://duta71vbuo2ft"]
+
+[ext_resource type="Script" uid="uid://okv68m5aahr6" path="res://Scenes/ui.gd" id="1_qdvrb"]
+[ext_resource type="Texture2D" uid="uid://cr8kqd4ib4o6t" path="res://Graphics/wing.png" id="2_nf4gj"]
+[ext_resource type="FontFile" uid="uid://ck7ekd5ug6nij" path="res://Graphics/PressStart2P-Regular.ttf" id="3_nf4gj"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_qdvrb")
+wing_texture = ExtResource("2_nf4gj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="JumpIcons" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_right = 481.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1

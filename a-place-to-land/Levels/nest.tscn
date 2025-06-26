@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://doxi8h08g8wan"]
+
+[ext_resource type="Texture2D" uid="uid://cr0k2vf6b1f4l" path="res://Graphics/tree.png" id="1_srpl7"]
+[ext_resource type="Script" uid="uid://dfrwap4yr4xkc" path="res://Levels/nest.gd" id="1_vdrh7"]
+
+[node name="Nest" type="Node2D"]
+script = ExtResource("1_vdrh7")
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture = ExtResource("1_srpl7")
+region_enabled = true
+region_rect = Rect2(0, 0, 100.532, 96)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-13, -48, -1, -48, 27, -32, 38, -12, 34, 7, 13, 14, 16, 23, 29, 12, 37, 21, 35, 27, 17, 29, 9, 45, 12, 48, -19, 48, 1, 34, 5, 25, -5, 26, -6, 17, -19, 14, -43, 0, -42, -12, -28, -22, -27, -28, -25, -37)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

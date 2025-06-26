@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmf4fqu1jpsqq"]
+
+[ext_resource type="Script" uid="uid://daw2515q51rxq" path="res://Levels/path_follow_2d2.gd" id="1_hrpga"]
+[ext_resource type="Texture2D" uid="uid://qd20jp8hafh8" path="res://Graphics/small_platform.png" id="2_f8lbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waaef"]
+size = Vector2(31.9081, 29.1011)
+
+[node name="PathFollow2D" type="PathFollow2D"]
+rotation = -0.00316455
+rotates = false
+loop = false
+script = ExtResource("1_hrpga")
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_f8lbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.00473022, -1.50002)
+shape = SubResource("RectangleShape2D_waaef")
